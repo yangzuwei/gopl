@@ -96,4 +96,13 @@ func main() {
 		//通过类型断言将其转换为可使用的func后再调用
 		fmt.Println(f.(func() int)())
 	}
+
+	testClosure()
+}
+
+func testClosure() {
+	s := "this is a closure"
+	func() {
+		fmt.Println(s)
+	}()
 }

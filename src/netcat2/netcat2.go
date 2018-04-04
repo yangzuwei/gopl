@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"time"
 )
 
 func main() {
@@ -16,6 +17,7 @@ func main() {
 	defer conn.Close()
 	go mustCopy(os.Stdout, conn)
 	mustCopy(conn, os.Stdin)
+	time.Sleep(3 * time.Second)
 }
 
 func mustCopy(dst io.Writer, src io.Reader) {
