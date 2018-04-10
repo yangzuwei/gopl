@@ -29,6 +29,6 @@ func main() {
 	t.Add(1023)
 	//t.Add(1025)
 	//t.Add(1025)
-	fmt.Println(t.Has(1025))
-	fmt.Println(len(t.words))
+	//fmt.Println(t.Has(1025))
+	fmt.Println(32 % 64)
 }
