@@ -9,31 +9,31 @@ import (
 	"reflect"
 )
 
+var fileNames []string
+
 func main() {
 	f := filepath.Dir("/f/golang/src/degree")
 	fmt.Println(f)
-	f1, _ := os.Stat("..")
+	f1, _ := ioutil.ReadDir("..")
 	fmt.Println(reflect.TypeOf(f1))
-	var fileNames []string
-	var dirNames = []os.FileInfo{f1}
-	for tmp := range dirNames {
-		if err != nil {
-			break
-		}
-		if tmp.IsDir() {
-			inside, _ := ioutil.ReadDir(tmp.Name())
-			for i, _ := range inside {
-				if i.IsDir() {
-					st.Push(i)
-				} else {
-					fileNames = append(fileNames, i.Name())
-				}
-			}
-		} else {
-			fileNames = append(fileNames, tmp.Name())
-		}
+	storeFiles("..")
+	fmt.Println(fileNames, len(fileNames))
 
-		fmt.Println(tmp)
+}
+
+func storeFiles(dir string) {
+	if tmp, _ := os.Stat(dir); tmp.IsDir() {
+		dirs, _ := ioutil.ReadDir(dir)
+		for _, d := range dirs {
+			if d.IsDir() {
+				storeFiles(dir + "/" + d.Name())
+			} else {
+				fileNames = append(fileNames, d.Name())
+			}
+		}
+	} else {
+		fileNames = append(fileNames, dir)
 	}
 
+	return
 }
