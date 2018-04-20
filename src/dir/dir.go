@@ -14,11 +14,11 @@ var fileNames []string
 func main() {
 	f := filepath.Dir("/f/golang/src/degree")
 	fmt.Println(f)
-	f1, _ := ioutil.ReadDir("..")
+	f1, _ := ioutil.ReadDir("F:/dingo/")
 	fmt.Println(reflect.TypeOf(f1))
-	storeFiles("..")
-	fmt.Println(fileNames, len(fileNames))
-
+	storeFiles("F:/20170303备份")
+	//fmt.Println(fileNames)
+	fmt.Println("一共", len(fileNames), "个文件")
 }
 
 func storeFiles(dir string) {
@@ -34,6 +34,5 @@ func storeFiles(dir string) {
 	} else {
 		fileNames = append(fileNames, dir)
 	}
-
 	return
 }
